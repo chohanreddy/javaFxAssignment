@@ -1,0 +1,71 @@
+Quiz Program
+
+----x---Purpose----x---
+This Quiz program is built for the class assignment as enlisted in the link
+https://thomas-broussard.fr/work/java/courses/project/fundamental.xhtml
+The goal specified in the content is as follows:
+"This project is proposed to students in order to evaluate their skills for the fundamental period of Java Programming and UML.
+
+This goal is achieved through the realization of a console application (+ GUI as possible bonus), which aims at managing digital quiz preparation and execution."
+
+----x---Scope----x---
+The Quiz program fulfills the GUI part with some console messaging as outlined in the assignment. The program also utilizes JDBC for Quiz CRUD operations.
+
+----x---Overview----x---
+The program executes in a following manner:
+
+1. JDBC -  for pulling data & processing
+
+2. JavaFX Main
+Opens the interface with greeting and presents two tabs
+
+Tab1 - For Playing Quiz
+Tab2 - for Level and Topic Selection
+----x---Infrastructure Requirements----x---
+
+-JDK 1.8 or above
+-JavaFX SDK - 11 & above - with Jar file
+- Sqlite3 - latest with Jar file
+
+The program needs to build configuration to include the respective Jar files in the project.
+
+----x---Functional Requirements----x---
+
+The program executes in a following manner:
+
+1. JDBC
+   - Drops any pre existing tables in the DB(databse)
+   - Creates new tables Question and Answer in DB with appropriate columns
+   - Pulls data from QuizData text file and stores in each table and column, both the tables share the same Qid(Question ID) which is also the PRIMARY KEY for each row
+
+2. JavaFX Main
+Opens the interface with greeting and presents two tabs
+
+Tab1 - For Playing Quiz
+Tab2 - for Level and Topic Selection
+
+Tab1 -> In case no level or topic is selected, it shows an error message
+If Level & Topic is selected, throws questions at use in form of MCQ & Open Questions. Both have options of Media content in them. Though the JDBC does not apply CLOB & BLOB for media storage, it stores the URL of the media file.
+After quiz ends, the program calculates the score and gives the user the option to exit.
+
+Tab2-> It asks user for Level (Easy & Hard) and topic. Based on the selection, user has the option to 
+1. Generate Quiz -> Gives error if any field of level or topic is not selected.
+2. Export Quiz-> Based on selection saves the Quiz with Answers in a text file. 
+Gives error if any field of level or topic is not selected.	
+
+Classes:
+
+- Main class (For JavaFX execution)
+- Questions - For creating Question objects
+- Answers -  for creating Answer objects
+- DataSource - For managing JDBC operations
+
+Others
+-application.css - Custom CSS rules
+-QuizData.txt - text format of Quiz question and answers
+-qAList - List of Question Objects
+-AnswersList - List of Answer Objects  		
+
+----x---References and Appendices----x---
+
+All question with media were picked from Google search and sites.
